@@ -1,6 +1,7 @@
 // Beolvassuk a szükséges csomagokat.
 var express = require('express');
 var fs = require('fs');
+var itf = require('./my_modules/itf_module');
 
 // Globális változok. az összes függveny ltaja öket, bar nincs olyan, hogy globalis valtozo a JS-ben
 var port = 3333;
