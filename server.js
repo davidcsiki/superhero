@@ -25,19 +25,29 @@ app.use(function (req, res, next) {
 
 // Definiáljuk a szerver működését.
 app.get('/', function (req, res) {
+  handleUsers(req, res, false, function (allUsers) {
     res.render('index', {
-        title: 'ItFactory Web Superhero',
-        message: 'Yes, it is!'
+      title: 'ItFactory Web Superhero',
+      message: 'Yes, it is!',
+      users: allUsers
     });
+  });
 });
 
+
 // Falhasználó modell.
-function handleUsers(req, res) {
+function handleUsers(req, res, next, callBack ) {
     fs.readFile('./users.json', 'utf8', function (err, data) {
         if (err) throw err;
 
         // var path = req.url.split( '/' );
         var users = JSON.parse(data);
+
+        if ( callBack) {
+          callBack( users );
+          return;
+        }
+
         var _user = {};
 
         // Ha nem kaptunk id-t.
