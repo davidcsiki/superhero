@@ -73,7 +73,20 @@ module.exports = function (grunt) {
                     dest: 'build/img/'
                 }]
             }
-        }
+        },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    'build/all.min.css': [
+                        'foo.css', 'bar.css'
+                    ]
+                }
+            }
+}
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -83,6 +96,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // Default task(s).
     grunt.registerTask('default', ['watch']);
