@@ -1,4 +1,5 @@
 // Mongodb adatmodell.
+var mongoose = require( "mongoose" );
 // Kezeli a megadott táblát.
 var db,
     Users;
@@ -10,7 +11,8 @@ function setConnection( mongodb ) {
 // Kollekció modell.
 function setModel() {
 
-    Users = db.model( 'Users', {
+    var Schema = mongoose.Schema;
+    var userSchema = new Schema({
         name: String,
         email: String,
         phone: String,
@@ -20,41 +22,49 @@ function setModel() {
             birthsday: Date,
             hobby: String
         }
-    }, 'Users' );
+    });
+    userSchema.statics.isAdmin = function( r, cb ) {
+        return this.find({ 'role': {$lte: 2} }, cb);
+    };
 
+    Users = db.model( 'Users', userSchema, 'Users' );
+
+}
+
+function getModel() {
+    return Users;
 }
 
 // Adatok olvasása a kollekcióból.
 function read( where, callBack ) {
     // Paraméter vizsgálata.
-    if (!where) {
-      where = {};
+    if ( !where ) {
+        where = {};
     }
 
-    // Adatbázis olvasása
+    // Adatbázis olvasása.
     Users.find( where, function( err, data ) {
         if ( err ) {
             console.error( 'Error in query: ', where );
-            data = {};
+            data = [];
         }
-        if ( callBack) {
-              callBack( data );
+
+        if ( callBack ) {
+            callBack( data );
         }
     });
 }
-
 
 // Egy dokumentum lekérése.
-function first(where, callBack){
-    read( where, function( data ){
-      if ( data.length > 0 ){
-          callBack( data[0] );
-      } else {
-          callBack( null );
-      }
+function first( where, callBack ) {
+    read( where, function( data ) {
+        if ( data.length > 0 ) {
+            callBack( data[0] );
+        } else {
+            callBack( null );
+        }
     });
 }
-
 
 // Új dokumentum beszúrása az adatbázisba.
 function create( document, callBack ) {
@@ -76,5 +86,6 @@ module.exports = {
     setConnection: setConnection,
     read: read,
     create: create,
-    first: first
+    first: first,
+    getModel: getModel
 };
