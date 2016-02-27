@@ -43,6 +43,19 @@ function read( where, callBack ) {
     });
 }
 
+
+// Egy dokumentum lekérése.
+function first(where, callBack){
+    read( where, function( data ){
+      if ( data.length > 0 ){
+          callBack( data[0] );
+      } else {
+          callBack( null );
+      }
+    });
+}
+
+
 // Új dokumentum beszúrása az adatbázisba.
 function create( document, callBack ) {
 
@@ -62,5 +75,6 @@ function create( document, callBack ) {
 module.exports = {
     setConnection: setConnection,
     read: read,
-    create: create
+    create: create,
+    first: first
 };
