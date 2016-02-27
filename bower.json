@@ -3,6 +3,6 @@
     "dependencies": {
         "bootstrap": "3.3.6",
         "jquery": "2.2.1",
-        "angular": "1.4.4"
+        "angular": "~1.5.1-build.4646+sha.32feb2b"
     }
 }
