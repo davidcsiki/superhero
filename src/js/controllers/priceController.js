@@ -25,11 +25,4 @@ superhero.controller( "priceController",
         return isNaN( newPrice ) ? 0 : newPrice;
     };
 
-    // Felhasználók lekérése.
-    $http.get( '/users' )
-        .then( function( data ) {
-            console.log( data );
-    });
-
-
 }]);

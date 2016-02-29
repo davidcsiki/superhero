@@ -1,6 +1,9 @@
 superhero.controller( "userController",[
     "$scope",
-    function( $scope ) {
-        //
+    "userFactory",
+    function( $scope, userFactory ) {
+
+        userFactory.getAll();
+
     }
 ]);
