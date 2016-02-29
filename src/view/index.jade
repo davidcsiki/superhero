@@ -4,11 +4,17 @@ block content
   .container
     .starter-template
       h1= title
-      .row(data-ng-controller='nameController')
+      .row(data-ng-controller='priceController')
         .col-xs-3
-          input.form-control(data-ng-model='yourName')
+          input.form-control(data-ng-model='yourPrice')
           hr
-          h1 Hello {{yourPrice | currencyFilter:'USD'}}
+          p A te árad: {{calcOwnPrice(yourPrice) | currencyFilter}}
+          p Más ára: {{calcOtherPrice(yourPrice) | currencyFilter}}
+          p Teljes ár: {{yourPrice | currencyFilter}}
+      .row(data-ng-controller='userController')
+        .col-xs-3
+          p {{yourPrice}}
+
 
 
 
