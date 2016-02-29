@@ -11,8 +11,8 @@ superhero.factory( "userFactory", [
 
                  // Felhasználók lekérése.
                 $http.get( '/users' )
-                    .then( function( data ) {
-                        deferred.resolve( data );
+                    .then( function( serverData ) {
+                        deferred.resolve( serverData.data );
                 }, function( err) {
                     deferred.reject( err );
                 });
