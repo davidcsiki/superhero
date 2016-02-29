@@ -5,11 +5,20 @@ superhero.factory( "userFactory", [
     function( $http, $q ) {
         return {
           getAll: function() {
+
+                // Új defer példány.
+                var deferred = $q.defer();
+
                  // Felhasználók lekérése.
                 $http.get( '/users' )
                     .then( function( data ) {
-                        console.log( data );
+                        deferred.resolve( data );
+                }, function( err) {
+                    deferred.reject( err );
                 });
+
+                //Visszatérés a promise objektummal.
+                return deferred.promise;
           }
         };
     }

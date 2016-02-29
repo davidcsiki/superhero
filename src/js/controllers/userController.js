@@ -3,7 +3,12 @@ superhero.controller( "userController", [
     "userFactory",
     function( $scope, userFactory ) {
 
-        userFactory.getAll();
+        userFactory.getAll()
+            .then( function( userData ) {
+                console.log( userData );
+            }, function( err ) {
+                console.error( "Error while getting user data: ", err );
+        });
 
     }
 ]);
