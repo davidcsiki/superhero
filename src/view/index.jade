@@ -4,18 +4,14 @@ block content
   .container
     .starter-template
       h1= title
-      h2(class=classes) Message: #{message}
-      p.lead
-        | Now you can start your own project with
-        a(target='_blank', href='http://getbootstrap.com/') Bootstrap 3.3.6
-        | . This plugin is a fork from
-        a(href='https://github.com/le717/brackets-html-skeleton#readme') HTML Skeleton
-        | .
       .row(data-ng-controller='nameController')
         .col-xs-3
           input.form-control(data-ng-model='yourName')
           hr
-          h1 Hello {{yourName}}
+          h1 Hello {{yourPrice | currencyFilter}}
+
+
+
       ul
         each user in users
           li #{user.id}: #{user.name} - #{user.email}
