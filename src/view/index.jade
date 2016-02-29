@@ -12,13 +12,12 @@ block content
           p Más ára: {{calcOtherPrice(yourPrice) | currencyFilter}}
           p Teljes ár: {{yourPrice | currencyFilter}}
       .row(data-ng-controller='userController')
-        .col-xs-6
+        .col-xs-12
           p {{yourPrice}}
           table.table-condensed
             thead
                 tr
-                    th(data-ng-repeat='th in ["#", "name", "email", "phone"]')
-                    | {{th}}
+                    th(data-ng-repeat='th in ths') {{th}}
             tbody
                 tr(data-ng-repeat='row in users')
                     td {{row._id}}

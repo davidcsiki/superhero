@@ -10,8 +10,8 @@ mongoose.connect( 'mongodb://localhost/superhero' );
 var Users = require('./models/users');
 Users.setConnection( mongoose );
 Users.create( {
-    name: 'John Doe',
-    email: 'john.doe@gmail.com',
+    name: 'Jason Statham',
+    email: 'statham@gmail.com',
     phone: '+3614563214',
     address: '1122 Budapest, Kiss u. 10.',
     role: 3,

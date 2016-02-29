@@ -5,6 +5,7 @@ superhero.controller( "userController", [
 
         // Felhasználók.
         $scope.users = [];
+        $scope.ths = ['#', 'name', 'email', 'phone'];
 
         // Felhasználók lekérése.
         userFactory.getAll()
