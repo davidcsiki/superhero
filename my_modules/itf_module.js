@@ -1,5 +1,4 @@
-// SZükséges modulok.
-
+// Szükséges modulok.
 
 
 // Publikus elemek.
