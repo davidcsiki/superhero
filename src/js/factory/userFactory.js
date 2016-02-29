@@ -1,7 +1,8 @@
 // Factory létrehozása.
 superhero.factory( "userFactory", [
     "$http",
-    function( $http ) {
+    "$q",
+    function( $http, $q ) {
         return {
           getAll: function() {
                  // Felhasználók lekérése.

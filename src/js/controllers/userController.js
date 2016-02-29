@@ -1,4 +1,4 @@
-superhero.controller( "userController",[
+superhero.controller( "userController", [
     "$scope",
     "userFactory",
     function( $scope, userFactory ) {
