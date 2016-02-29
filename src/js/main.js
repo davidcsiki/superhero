@@ -1,14 +1,5 @@
-// Userek lekérése.
+var superhero = angular.module( "superhero", [] );
 
-jQuery.getJSON('users', function (users) {
-    console.log('all users', users);
-});
-
-// Check user.
-function checkUser( user ) {
-    if ( user.role > 4 ) {
-        return true;
-    } else {
-        return false;
-    }
-}
+superhero.controller( "nameController", [ "$scope", function( $scope ) {
+    $scope.yourName = "Joe";
+}]);

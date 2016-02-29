@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                 src: [
                     'src/vendor/jquery/dist/jquery.min.js',
                     'src/vendor/bootstrap/dist/js/bootstrap.min.js',
-                    'src/vendor/angular/angular.min.js',
+                    'src/vendor/angular/angular.js',
                     'src/js/*.js'
                     ],
                 dest: 'build/js/all.js'
@@ -81,12 +81,13 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'build/all.min.css': [
-                        'foo.css', 'bar.css'
+                    'build/css/all.min.css': [
+                        'src/vendor/bootstrap/dist/css/bootstrap.min.css',
+                        'src/vendor/bootstrap/dist/css/bootstrap-theme.min.css'
                     ]
                 }
             }
-}
+        }
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -100,6 +101,6 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('dev', ['clean', 'copy', 'uglify']);
+    grunt.registerTask('dev', ['clean', 'copy', 'uglify', 'cssmin']);
 
 };
