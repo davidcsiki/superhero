@@ -1,55 +1,18 @@
 /*
-    Modul
-    Controller
-    Factory
-    Service
-    Filter
-    Directive
-*/
+ Modul
+ Controller
+ Factory
+ Service
+ Filter
+ Directive
+ */
 
 
-// Fö modul definiálása.
-var superhero = angular.module( "superhero", ['currencyModule'] );
+// Fő modul definiálása.
+var superhero = angular.module("superhero", ['currencyModule']);
 
 // Module futásának kezdete.
-superhero.run( ["$http", function( $http){
+superhero.run(["$http", function ($http) {
     $http.defaults.headers.common['x-requested-with'] =
         'XMLHttpRequest';
 }]);
-
-// Létrehozunk egy kontrollert.
-superhero.controller( "priceController",
-    [
-        "$scope",
-        "$http",
-        function( $scope, $http ) {
-
-    // Figyelt változó.
-    $scope.yourPrice = 9999;
-
-    // YourPrice változó figyelése.
-    $scope.$watch('yourPrice', function( newValue, oldValue ) {
-       console.log( newValue, oldValue );
-    });
-
-    // Új értékek kalkulálása.
-    $scope.calcOwnPrice = function( price ) {
-        price = price.toString().replace( /[^0-9]/g, '')
-        newPrice = Math.round(parseInt( price ) * 0.7);
-        return isNaN( newPrice ) ? 0 : newPrice;
-    };
-    $scope.calcOtherPrice = function( price ) {
-        price = price.toString().replace( /[^0-9]/g, '')
-        newPrice = Math.round(parseInt( price ) * 0.85);
-        return isNaN( newPrice ) ? 0 : newPrice;
-    };
-
-    // Felhasználók lekérése.
-    $http.get( '/users' )
-        .then( function( data ) {
-            console.log( data );
-    });
-
-
-}]);
-

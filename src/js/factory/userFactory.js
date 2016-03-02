@@ -5,7 +5,6 @@ superhero.factory("userFactory", [
     function ($http, $q) {
         return {
             getAll: function () {
-
                 // Új defer példány.
                 var deferred = $q.defer();
 
@@ -21,7 +20,7 @@ superhero.factory("userFactory", [
                 return deferred.promise;
             },
             getOne: function( id ) {
-                 // Új defer példány.
+                // Új defer példány.
                 var deferred = $q.defer();
 
                 // Felhasználók lekérése.
